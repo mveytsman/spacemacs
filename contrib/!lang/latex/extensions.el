@@ -10,18 +10,15 @@
 ;;
 ;;; License: GPLv3
 
-(setq auctex-post-extensions '(emacs-builtin-reftex))
+(setq latex-post-extensions '(emacs-builtin-reftex))
 
-(defun auctex/init-emacs-builtin-reftex ()
+(defun latex/init-emacs-builtin-reftex ()
   "Initialize reftex"
 
   (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-  (setq reftex-plug-into-AUCTeX t)
+  (setq reftex-plug-into-AUCTeX '(nil nil t t t))
 
-  ;; not supported for now
-  ;; (setq spacemacs/key-binding-prefixes '(("mr" . "RefTeX")))
-
-  (evil-leader/set-key-for-mode 'LaTeX-mode
+  (evil-leader/set-key-for-mode 'latex-mode
     "mrc"    'reftex-citation
     "mrg"    'reftex-grep-document
     "mri"    'reftex-index-selection-or-word
